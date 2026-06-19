@@ -389,6 +389,10 @@ input[type="file"] {
   z-index: 4;
 }
 
+.finale[hidden] {
+  display: none;
+}
+
 .finale p {
   width: min(760px, 88vw);
   color: var(--accent);
