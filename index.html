@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff4f7">
+  <title>Between Us</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <main class="app-shell">
+    <header class="topbar">
+      <section>
+        <p class="eyebrow">UAE to Kerala</p>
+        <h1>Between Us</h1>
+        <p class="subcopy">A soft countdown to 24 August 2026, closing every little mile until the waiting ends.</p>
+      </section>
+      <section class="actions" aria-label="Controls">
+        <button id="themeToggle" type="button">Dark</button>
+        <label class="file-button">
+          Music
+          <input id="musicInput" type="file" accept="audio/*">
+        </label>
+        <label class="file-button">
+          Photo
+          <input id="backgroundInput" type="file" accept="image/*">
+        </label>
+      </section>
+    </header>
+
+    <section class="countdown-grid" aria-label="Countdown">
+      <article class="time-card"><span id="days">00</span><small>Days</small></article>
+      <article class="time-card"><span id="hours">00</span><small>Hours</small></article>
+      <article class="time-card"><span id="minutes">00</span><small>Minutes</small></article>
+      <article class="time-card"><span id="seconds">00</span><small>Seconds</small></article>
+    </section>
+
+    <section class="main-grid">
+      <article class="panel journey-panel">
+        <div class="panel-heading">
+          <h2>The Journey</h2>
+          <button id="musicToggle" type="button">Play</button>
+        </div>
+        <div class="map-stage">
+          <svg viewBox="0 0 980 470" role="img" aria-label="Stylized path from Kerala to UAE">
+            <defs>
+              <linearGradient id="sea" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#ffeaf2"/>
+                <stop offset="52%" stop-color="#dff9ff"/>
+                <stop offset="100%" stop-color="#eaffef"/>
+              </linearGradient>
+              <linearGradient id="routePaint" x1="0" x2="1">
+                <stop offset="0%" stop-color="#ff6f9d"/>
+                <stop offset="52%" stop-color="#58c6d1"/>
+                <stop offset="100%" stop-color="#ffbc75"/>
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="8" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <rect x="20" y="20" width="940" height="430" rx="38" fill="url(#sea)"/>
+            <circle cx="505" cy="245" r="178" fill="#ff7eab" opacity=".13"/>
+            <path class="land uae-land" d="M102 263c13-54 71-86 135-72 69 15 117 78 94 135-20 50-84 75-151 59-65-15-91-69-78-122z"/>
+            <path class="land kerala-land" d="M752 79c63-2 114 38 124 96 11 66-28 127-92 142-73 16-139-30-148-99-9-70 45-137 116-139z"/>
+            <text class="place-title" x="215" y="287" text-anchor="middle">UAE</text>
+            <text class="place-subtitle" x="215" y="321" text-anchor="middle">You</text>
+            <text class="place-title" x="760" y="183" text-anchor="middle">Kerala</text>
+            <text class="place-subtitle" x="760" y="217" text-anchor="middle">Them</text>
+            <path id="route" class="route" d="M760 229 C645 362 465 362 343 258 C274 198 205 222 166 298"/>
+            <path class="route-dash" d="M760 229 C645 362 465 362 343 258 C274 198 205 222 166 298"/>
+            <g id="traveler" filter="url(#glow)">
+              <text class="plane" x="0" y="-34" text-anchor="middle">✈</text>
+              <text class="heart" x="0" y="8" text-anchor="middle">♥</text>
+            </g>
+          </svg>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <article class="panel stats">
+          <h2>Live Statistics</h2>
+          <dl>
+            <div><dt>Journey complete</dt><dd id="complete">0%</dd></div>
+            <div><dt>Remaining</dt><dd id="remaining">100%</dd></div>
+            <div><dt>Total days left</dt><dd id="daysLeft">--</dd></div>
+            <div><dt>Current time</dt><dd id="now">--</dd></div>
+            <div><dt>Distance closed</dt><dd id="distance">--</dd></div>
+          </dl>
+        </article>
+
+        <article class="panel quote-card">
+          <h2>Today</h2>
+          <p id="quote">Two places, one countdown, one arrival.</p>
+          <p class="weather">UAE: warm golden evening · Kerala: soft coastal breeze</p>
+        </article>
+      </aside>
+    </section>
+
+    <section class="panel milestones">
+      <h2>Milestones</h2>
+      <ol>
+        <li data-milestone="25"><span></span>75% left</li>
+        <li data-milestone="50"><span></span>Halfway</li>
+        <li data-milestone="75"><span></span>25% left</li>
+        <li data-milestone="week"><span></span>Final week</li>
+        <li data-milestone="day"><span></span>Final day</li>
+      </ol>
+    </section>
+
+    <section class="panel timeline">
+      <h2>Relationship Timeline</h2>
+      <div class="timeline-grid">
+        <p>♡ First thought in the morning</p>
+        <p>♡ A message across the sea</p>
+        <p>♡ A plan becoming real</p>
+        <p>♡ The day distance ends</p>
+      </div>
+    </section>
+
+    <section id="finale" class="finale" hidden>
+      <p>After all the waiting, we're finally here ❤</p>
+    </section>
+  </main>
+
+  <audio id="music" loop preload="metadata" src="assets/music.mp3"></audio>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+:root {
+  --bg-a: #fff4f7;
+  --bg-b: #def9ff;
+  --ink: #3f2f48;
+  --muted: #7d7085;
+  --panel: rgba(255, 255, 255, .68);
+  --line: rgba(255, 255, 255, .78);
+  --accent: #ff6f9d;
+  --teal: #4fc4cf;
+  --mint: #a8eeb8;
+  --sun: #ffd099;
+  --shadow: 0 22px 60px rgba(99, 63, 94, .16);
+}
+
+body.dark {
+  --bg-a: #211c2c;
+  --bg-b: #173943;
+  --ink: #fff4fb;
+  --muted: #c9becd;
+  --panel: rgba(34, 31, 47, .68);
+  --line: rgba(255, 255, 255, .16);
+  --shadow: 0 22px 60px rgba(0, 0, 0, .28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg-a);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 78% 12%, rgba(255, 111, 157, .20), transparent 24rem),
+    radial-gradient(circle at 20% 88%, rgba(79, 196, 207, .18), transparent 22rem),
+    linear-gradient(135deg, var(--bg-a), var(--bg-b));
+  overflow-x: hidden;
+}
+
+body.has-photo::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: var(--photo) center / cover no-repeat;
+  opacity: .20;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 28px));
+  margin: 0 auto;
+  padding: 28px 0 42px;
+}
+
+.topbar,
+.main-grid,
+.panel,
+.countdown-grid {
+  position: relative;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .78rem;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-size: clamp(2.2rem, 6vw, 4.8rem);
+  line-height: .95;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 16px;
+  font-size: 1.15rem;
+}
+
+.subcopy {
+  max-width: 650px;
+  color: var(--muted);
+  font-size: clamp(.98rem, 2vw, 1.1rem);
+}
+
+.actions,
+.panel-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button,
+.file-button {
+  appearance: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--ink);
+  padding: 10px 15px;
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgba(92, 60, 98, .10);
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+button:hover,
+.file-button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, .82);
+  box-shadow: 0 16px 34px rgba(92, 60, 98, .16);
+}
+
+body.dark button:hover,
+body.dark .file-button:hover {
+  background: rgba(255, 255, 255, .14);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.time-card,
+.panel {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+}
+
+.time-card {
+  min-height: 126px;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+}
+
+.time-card span {
+  display: block;
+  font-size: clamp(2.5rem, 7vw, 4.4rem);
+  line-height: 1;
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.time-card small {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(320px, .8fr);
+  gap: 18px;
+}
+
+.side-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.panel {
+  border-radius: 28px;
+  padding: 22px;
+}
+
+.panel-heading {
+  justify-content: space-between;
+}
+
+.map-stage {
+  min-height: 430px;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.map-stage svg {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  display: block;
+}
+
+.land {
+  stroke: rgba(255, 255, 255, .88);
+  stroke-width: 2;
+}
+
+.uae-land {
+  fill: var(--sun);
+}
+
+.kerala-land {
+  fill: var(--mint);
+}
+
+.place-title {
+  font-size: 34px;
+  font-weight: 900;
+  fill: var(--ink);
+}
+
+.place-subtitle {
+  font-size: 30px;
+  font-weight: 850;
+  fill: var(--ink);
+}
+
+.route {
+  fill: none;
+  stroke: url(#routePaint);
+  stroke-width: 8;
+  stroke-linecap: round;
+  animation: shimmer 3.6s linear infinite;
+}
+
+.route-dash {
+  fill: none;
+  stroke: rgba(255, 255, 255, .80);
+  stroke-width: 2;
+  stroke-dasharray: 8 12;
+  animation: dash 18s linear infinite;
+}
+
+.heart {
+  fill: #ff4f86;
+  font-size: 48px;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.plane {
+  fill: var(--ink);
+  font-size: 30px;
+}
+
+.stats dl {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.stats div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.stats dt {
+  color: var(--muted);
+}
+
+.stats dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 900;
+}
+
+.quote-card {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-card p:not(.weather) {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.weather {
+  margin-top: auto;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.milestones,
+.timeline {
+  margin-top: 18px;
+}
+
+.milestones ol {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  position: relative;
+}
+
+.milestones ol::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 13px;
+  height: 3px;
+  background: rgba(125, 112, 133, .35);
+}
+
+.milestones li {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  color: var(--muted);
+  text-align: center;
+  font-weight: 800;
+  z-index: 1;
+}
+
+.milestones span {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  background: #9b879f;
+}
+
+.milestones li.done {
+  color: var(--ink);
+}
+
+.milestones li.done span {
+  background: var(--accent);
+  box-shadow: 0 0 28px rgba(255, 111, 157, .72);
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.timeline-grid p {
+  margin: 0;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .30);
+  color: var(--ink);
+  font-weight: 750;
+}
+
+.finale {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 244, 247, .80);
+  backdrop-filter: blur(18px);
+  z-index: 4;
+}
+
+.finale p {
+  width: min(760px, 88vw);
+  color: var(--accent);
+  font-size: clamp(2rem, 8vw, 5.8rem);
+  line-height: 1;
+  font-weight: 950;
+  text-align: center;
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.12); }
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: -260; }
+}
+
+@keyframes shimmer {
+  50% { filter: drop-shadow(0 0 18px rgba(255, 111, 157, .46)); }
+}
+
+@media (max-width: 860px) {
+  .app-shell {
+    width: min(100% - 20px, 680px);
+    padding-top: 18px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .actions {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map-stage,
+  .map-stage svg {
+    min-height: 330px;
+  }
+
+  .milestones ol {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .milestones ol::before {
+    display: none;
+  }
+
+  .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-grid {
+    gap: 10px;
+  }
+
+  .time-card,
+  .panel {
+    border-radius: 22px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .time-card {
+    min-height: 104px;
+  }
+}
